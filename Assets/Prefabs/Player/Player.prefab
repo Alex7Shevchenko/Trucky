@@ -81,25 +81,43 @@ MonoBehaviour:
   _wheels:
   - WheelCollider: {fileID: 282816892978711236}
     WheelTransform: {fileID: 6499641692502655697}
+    Drives: 1
+    Steers: 1
   - WheelCollider: {fileID: 7914282127576056745}
     WheelTransform: {fileID: 8320695209779624512}
+    Drives: 1
+    Steers: 1
   - WheelCollider: {fileID: 6715362166542673076}
     WheelTransform: {fileID: 190387543696920153}
+    Drives: 1
+    Steers: 0
   - WheelCollider: {fileID: 3809133252533591624}
     WheelTransform: {fileID: 3310117181040786139}
+    Drives: 1
+    Steers: 0
   - WheelCollider: {fileID: 5398603673435893486}
     WheelTransform: {fileID: 3588356503102672612}
+    Drives: 1
+    Steers: 1
   - WheelCollider: {fileID: 2748990000691588086}
     WheelTransform: {fileID: 5035723875108387124}
+    Drives: 1
+    Steers: 1
   - WheelCollider: {fileID: 4565060523700936628}
     WheelTransform: {fileID: 693391270066089061}
+    Drives: 1
+    Steers: 0
   - WheelCollider: {fileID: 8316399799033555325}
     WheelTransform: {fileID: 6131635337703281227}
+    Drives: 1
+    Steers: 0
   _maxMotorTorque: 500
-  _turnSpeed: 10
   _brakeTorque: 1800
   _maxSpeedKPH: 25
   _torqueRamp: 2000
+  _maxSteerAngle: 45
+  _steerSpeedDegPerSec: 360
+  _steerDampenBySpeed: 0.5
   _forwardAxis: Vertical
   _turnAxis: Horizontal
 --- !u!54 &7721873650322312721
