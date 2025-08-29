@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 441989834147791360}
   - component: {fileID: 1624823681857283164}
   - component: {fileID: 4545191167676112937}
+  - component: {fileID: 6770511218542020249}
+  - component: {fileID: 906735685985600422}
   - component: {fileID: 7721873650322312721}
   m_Layer: 0
   m_Name: Player
@@ -114,12 +116,39 @@ MonoBehaviour:
   _maxMotorTorque: 500
   _brakeTorque: 1800
   _maxSpeedKPH: 25
-  _torqueRamp: 2000
   _maxSteerAngle: 45
   _steerSpeedDegPerSec: 360
   _steerDampenBySpeed: 0.5
-  _forwardAxis: Vertical
-  _turnAxis: Horizontal
+--- !u!114 &6770511218542020249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7803927228844128747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1fd31cd7205034f81c96bc12430d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
+  _turretBase: {fileID: 6345400545230140307}
+  _gunBase: {fileID: 1940071338604432268}
+  _rotationSpeed: 50
+  _maxYaw: 10
+--- !u!114 &906735685985600422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7803927228844128747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02fea829fe719844c8886c434a03d729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainAttachment: {fileID: 0}
 --- !u!54 &7721873650322312721
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -467,6 +496,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 691751589885712349, guid: b37f9df1210e4a842bd401f0224f7813, type: 3}
   m_PrefabInstance: {fileID: 1956891745221560}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1940071338604432268 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1939493787318972468, guid: b37f9df1210e4a842bd401f0224f7813, type: 3}
+  m_PrefabInstance: {fileID: 1956891745221560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!146 &2748990000691588086 stripped
 WheelCollider:
   m_CorrespondingSourceObject: {fileID: 2747385022360375374, guid: b37f9df1210e4a842bd401f0224f7813, type: 3}
@@ -510,6 +544,11 @@ WheelCollider:
 --- !u!4 &6131635337703281227 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6129682844317854195, guid: b37f9df1210e4a842bd401f0224f7813, type: 3}
+  m_PrefabInstance: {fileID: 1956891745221560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6345400545230140307 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6343768561765664811, guid: b37f9df1210e4a842bd401f0224f7813, type: 3}
   m_PrefabInstance: {fileID: 1956891745221560}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &6499641692502655697 stripped
