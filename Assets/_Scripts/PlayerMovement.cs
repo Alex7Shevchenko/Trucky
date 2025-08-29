@@ -6,26 +6,24 @@ public class PlayerMovement : MonoBehaviour
     [Header("References")]
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private WheelPart[] _wheels;
-    private WheelCollider[] _wheelsColliders;   // all (for mesh syncing)
-    private Transform[] _wheelsTransforms;      // all (for mesh syncing)
-    private WheelCollider[] _drivingColliders;  // only those with Drives = true
-    private WheelCollider[] _steeringColliders; // only those with Steers = true
+    private WheelCollider[] _wheelsColliders;
+    private Transform[] _wheelsTransforms;
+    private WheelCollider[] _drivingColliders;
+    private WheelCollider[] _steeringColliders;
 
     [Header("Drive")]
     [SerializeField] private float _maxMotorTorque = 500f;
     [SerializeField] private float _brakeTorque = 1800f;
     [SerializeField] private float _maxSpeedKPH = 25f;
-    [SerializeField] private float _torqueRamp = 2000f; // (kept for future smoothing if you want it)
 
     [Header("Steering")]
-    [SerializeField] private float _maxSteerAngle = 25f;        // degrees
-    [SerializeField] private float _steerSpeedDegPerSec = 360f; // how fast wheels reach target angle
+    [SerializeField] private float _maxSteerAngle = 25f;
+    [SerializeField] private float _steerSpeedDegPerSec = 360f;
     [Tooltip("0 = no dampening, 1 = strong reduction at top speed")]
     [Range(0f,1f)] [SerializeField] private float _steerDampenBySpeed = 0.5f;
 
-    [Header("Input")]
-    [SerializeField] private string _forwardAxis = "Vertical";
-    [SerializeField] private string _turnAxis = "Horizontal";
+    private string _forwardAxis = "Vertical";
+    private string _turnAxis = "Horizontal";
 
     private void Start()
     {
@@ -108,10 +106,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (colliders == null) return;
 
-        // Reduce max steering angle as speed increases for stability
         float dampen = Mathf.Lerp(1f, 1f - _steerDampenBySpeed, Mathf.InverseLerp(0f, _maxSpeedKPH, speedKph));
         float targetAngle = steerInput * _maxSteerAngle * dampen;
-
         float step = _steerSpeedDegPerSec * Time.fixedDeltaTime;
 
         for (int i = 0; i < colliders.Length; i++)
