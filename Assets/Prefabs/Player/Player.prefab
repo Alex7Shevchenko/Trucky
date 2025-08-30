@@ -134,7 +134,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _turretBase: {fileID: 6345400545230140307}
   _gunBase: {fileID: 1940071338604432268}
-  _rotationSpeed: 50
+  _rotationSpeed: 100
   _maxYaw: 10
 --- !u!114 &906735685985600422
 MonoBehaviour:
@@ -148,7 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02fea829fe719844c8886c434a03d729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainAttachment: {fileID: 0}
+  _mainAttachment:
+    Attachment: {fileID: 0}
+    AttachmentPosition: {fileID: 1940071338604432268}
 --- !u!54 &7721873650322312721
 Rigidbody:
   m_ObjectHideFlags: 0

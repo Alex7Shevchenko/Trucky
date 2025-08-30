@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 17984
+  controlID: 46407
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 17985
+  controlID: 46408
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 17934
+  controlID: 46357
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -244,9 +244,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 0413ffff
-      m_LastClickedID: -60668
-      m_ExpandedIDs: 0413ffff0813fffffafaffff04fbffff14fbffff1cfbffff1efbffff
+      m_SelectedIDs: b035feff
+      m_LastClickedID: -117328
+      m_ExpandedIDs: b035feff6069feff22cbfeff06cefeff70dcfeffb4dcfeff0013ffff0413ffff0813fffffafaffff04fbffff14fbffff1cfbffff1efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -960,9 +960,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -25.17839, y: -5.9945407, z: 1.0826011}
+    m_Target: {x: 1.7632895, y: 2.4125254, z: 2.633605}
     speed: 2
-    m_Value: {x: -25.17839, y: -5.9945407, z: 1.0826011}
+    m_Value: {x: 1.7632895, y: 2.4125254, z: 2.633605}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1008,13 +1008,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.095213525, y: 0.70026684, z: -0.0951275, w: -0.70106673}
+    m_Target: {x: 0.19515273, y: 0.4516777, z: -0.101943105, w: 0.8645288}
     speed: 2
-    m_Value: {x: -0.09521433, y: 0.70027274, z: -0.095128305, w: -0.7010727}
+    m_Value: {x: 0.19516252, y: 0.45170036, z: -0.10194822, w: 0.8645721}
   m_Size:
-    m_Target: 14.770852
+    m_Target: 2.5324476
     speed: 2
-    m_Value: 14.770852
+    m_Value: 2.5324476
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 17986
+  controlID: 46409
   draggingID: 0
 --- !u!114 &10
 MonoBehaviour:
@@ -1145,7 +1145,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/_Scripts/Player/PlayerHandles
+    - Assets/Prefabs/Tank/Projectiles
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1155,15 +1155,15 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/_Scripts/Player/PlayerHandles
+  - Assets/Prefabs/Tank/Projectiles
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Unity Projects\Trucky
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 48ca0000
-    m_LastClickedID: 51784
+    scrollPos: {x: 0, y: 83}
+    m_SelectedIDs: 24f80000
+    m_LastClickedID: 63524
     m_ExpandedIDs: 00000000aeb20000b0b20000b2b20000b4b20000b6b20000b8b20000bab20000bcb20000beb20000c0b20000c2b20000c4b2000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1219,10 +1219,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 1cfbffff
-    m_LastClickedInstanceID: -1252
-    m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000aa02000080020000
+    m_SelectedInstanceIDs: b035feff
+    m_LastClickedInstanceID: -117328
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: c6230000aa02000080020000b4bc0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
