@@ -20,9 +20,8 @@ public class CannonAttachment : ProjectileActiveAttachment
     private void ShootShell()
     {
         _currentCooldown = _cooldown;
-        var shell = Instantiate(_bulletPrefab);
-        shell.transform.position = _gunParts[0]._shotPoint.position;
-        shell.transform.rotation = _gunParts[0]._shotPoint.rotation;
+        var shotPoint = _gunParts[0]._shotPoint;
+        var shell = Instantiate(_bulletPrefab, shotPoint.position, shotPoint.rotation);
         var rigidbody = shell.GetComponent<Rigidbody>();
         rigidbody.AddForce(shell.transform.forward * _shotStrength, ForceMode.Impulse);
     }

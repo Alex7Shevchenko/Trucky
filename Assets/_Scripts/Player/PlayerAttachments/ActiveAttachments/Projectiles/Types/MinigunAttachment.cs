@@ -25,9 +25,8 @@ public class MinigunAttachment : ProjectileActiveAttachment
     private void ShootBullet(int index)
     {
         _currentCooldown = _cooldown;
-        var bullet = Instantiate(_bulletPrefab);
-        bullet.transform.position = _gunParts[index]._shotPoint.position;
-        bullet.transform.rotation = _gunParts[index]._shotPoint.rotation;
+        var shotPoint = _gunParts[0]._shotPoint;
+        var bullet = Instantiate(_bulletPrefab, shotPoint.position, shotPoint.rotation);
         var rigidbody = bullet.GetComponent<Rigidbody>();
         rigidbody.AddForce(bullet.transform.forward * _shotStrength, ForceMode.Impulse);
     }
