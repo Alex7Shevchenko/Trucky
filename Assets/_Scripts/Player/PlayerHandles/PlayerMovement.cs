@@ -3,7 +3,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Rigidbody Rigidbody => _rigidbody;
+
     [Header("References")]
+    [SerializeField] private PlayerManager _playerManager;
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private WheelPart[] _wheels;
     private WheelCollider[] _wheelsColliders;
@@ -20,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _maxSteerAngle = 25f;
     [SerializeField] private float _steerSpeedDegPerSec = 360f;
     [Tooltip("0 = no dampening, 1 = strong reduction at top speed")]
-    [Range(0f,1f)] [SerializeField] private float _steerDampenBySpeed = 0.5f;
+    [Range(0f, 1f)][SerializeField] private float _steerDampenBySpeed = 0.5f;
 
     private string _forwardAxis = "Vertical";
     private string _turnAxis = "Horizontal";
@@ -44,13 +47,13 @@ public class PlayerMovement : MonoBehaviour
             wheelsColliders.Add(wheel.WheelCollider);
             wheelsTransforms.Add(wheel.WheelTransform);
 
-            if (wheel.Drives)  driving.Add(wheel.WheelCollider);
-            if (wheel.Steers)  steering.Add(wheel.WheelCollider);
+            if (wheel.Drives) driving.Add(wheel.WheelCollider);
+            if (wheel.Steers) steering.Add(wheel.WheelCollider);
         }
 
-        _wheelsColliders   = wheelsColliders.ToArray();
-        _wheelsTransforms  = wheelsTransforms.ToArray();
-        _drivingColliders  = driving.ToArray();
+        _wheelsColliders = wheelsColliders.ToArray();
+        _wheelsTransforms = wheelsTransforms.ToArray();
+        _drivingColliders = driving.ToArray();
         _steeringColliders = steering.ToArray();
     }
 
@@ -133,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
 public class WheelPart
 {
     public WheelCollider WheelCollider;
-    public Transform   WheelTransform;
+    public Transform WheelTransform;
     public bool Drives = true;
     public bool Steers = false;
 }

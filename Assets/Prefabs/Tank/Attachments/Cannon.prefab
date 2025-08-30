@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091026054124305155}
-  m_Mesh: {fileID: -1408851747634423451, guid: 4c973c7e66107d34a99fa7a293a6aaa7, type: 3}
+  m_Mesh: {fileID: -1408851747634423451, guid: b43424a02545fce44add43640ccd88ae, type: 3}
 --- !u!23 &162142234020740735
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2807400302725620874}
-  m_Mesh: {fileID: 369689273696691656, guid: 4c973c7e66107d34a99fa7a293a6aaa7, type: 3}
+  m_Mesh: {fileID: 369689273696691656, guid: b43424a02545fce44add43640ccd88ae, type: 3}
 --- !u!23 &2809910295593776815
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -252,8 +252,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3421347515610045537}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.9}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.9000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -307,12 +307,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cooldown: 1
-  _shellPrefab: {fileID: 6685241118280909633, guid: f0092ae0f14d459489fa510aff211af6, type: 3}
-  _shotPoint: {fileID: 7000017165457196834}
-  _recoilObjectTarget: {fileID: 1006382142703848916}
-  _playerRigidibody: {fileID: 0}
+  _bulletPrefab: {fileID: 6685241118280909633, guid: f0092ae0f14d459489fa510aff211af6, type: 3}
+  _playerRigidbody: {fileID: 0}
   _shotStrength: 100
   _recoilStrength: 1000
+  _gunParts:
+  - _recoilObjectTarget: {fileID: 1006382142703848916}
+    _shotPoint: {fileID: 7000017165457196834}
   _animationRecoilTime: 0.17
   _animationRecoilStrength: 0.5
 --- !u!1 &7025031918466346371

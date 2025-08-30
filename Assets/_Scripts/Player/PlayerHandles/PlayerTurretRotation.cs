@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerTurretRotation : MonoBehaviour
 {
+    [SerializeField] private PlayerManager _playerManager;
     [SerializeField] private Camera _camera;
     [SerializeField] private Transform _turretBase;
     [SerializeField] private Transform _gunBase;

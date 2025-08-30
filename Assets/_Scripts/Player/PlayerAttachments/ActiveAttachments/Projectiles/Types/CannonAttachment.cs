@@ -3,35 +3,40 @@ using UnityEngine;
 
 public class CannonAttachment : ProjectileActiveAttachment
 {
-    public override void HandleAbility()
+    public override void HandleAbility(KeyCode keyCode)
     {
-        if (Input.GetKey(KeyCode.Mouse0) && _currentCooldown <= 0)
+        if (Input.GetKey(keyCode) && _currentCooldown <= 0)
         {
             ShootShell();
             Recoil();
         }
     }
 
+    public override void Init(PlayerManager playerManager)
+    {
+        _playerRigidbody = playerManager.PlayerMovement.Rigidbody;
+    }
+
     private void ShootShell()
     {
         _currentCooldown = _cooldown;
-        var shell = Instantiate(_shellPrefab);
-        shell.transform.position = _shotPoint.position;
-        shell.transform.rotation = _shotPoint.rotation;
+        var shell = Instantiate(_bulletPrefab);
+        shell.transform.position = _gunParts[0]._shotPoint.position;
+        shell.transform.rotation = _gunParts[0]._shotPoint.rotation;
         var rigidbody = shell.GetComponent<Rigidbody>();
         rigidbody.AddForce(shell.transform.forward * _shotStrength, ForceMode.Impulse);
     }
 
     private void Recoil()
     {
-        Vector3 recoilImpulse = -_shotPoint.forward * _recoilStrength;
-        _playerRigidibody.AddForceAtPosition(recoilImpulse, _shotPoint.position, ForceMode.Impulse);
+        Vector3 recoilImpulse = -_gunParts[0]._shotPoint.forward * _recoilStrength;
+        _playerRigidbody.AddForceAtPosition(recoilImpulse, _gunParts[0]._shotPoint.position, ForceMode.Impulse);
 
-        float recoilTime = _animationRecoilTime > _cooldown ? _cooldown : _animationRecoilTime;
+        float recoilTime = _animationRecoilTime * (_gunParts.Length + 1) > _cooldown ? _cooldown : _animationRecoilTime;
         float recoilHalfTime = recoilTime / 2;
         float recoilStrength = -_animationRecoilStrength;
 
-        _recoilObjectTarget.DOLocalMoveZ(recoilStrength, recoilHalfTime)
+        _gunParts[0]._recoilObjectTarget.DOLocalMoveZ(recoilStrength, recoilHalfTime)
             .SetRelative(true)
             .SetLoops(2, LoopType.Yoyo)
             .SetEase(Ease.OutSine);
