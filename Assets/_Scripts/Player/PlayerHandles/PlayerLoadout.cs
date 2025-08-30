@@ -16,7 +16,15 @@ public class PlayerLoadout : MonoBehaviour
 
     public void AttachMainAttachment(GameObject attachmentPrefab)
     {
-        var attachment = Instantiate(attachmentPrefab, _mainAttachment.AttachmentPosition);
+        var transformToAttach = _mainAttachment.AttachmentPosition;
+
+        if (_mainAttachment.Attachment != null)
+            Destroy(_mainAttachment.Attachment.gameObject);
+
+        if (_secondaryAttachment.Attachment != null)
+            transformToAttach = _mainAttachmentPositionOverride;
+
+        var attachment = Instantiate(attachmentPrefab, transformToAttach);
         _mainAttachment.Attachment = attachment.GetComponent<Attachment>();
         _mainAttachment.Attachment.Init(_playerManager);
     }
@@ -29,7 +37,12 @@ public class PlayerLoadout : MonoBehaviour
 
     public void AttachSecondaryAttachment(GameObject attachmentPrefab)
     {
-        _mainAttachment.Attachment.transform.position = _mainAttachmentPositionOverride.position;
+        if (_secondaryAttachment.Attachment != null)
+            Destroy(_secondaryAttachment.Attachment.gameObject);
+
+        if (_mainAttachment.Attachment != null)
+            _mainAttachment.Attachment.transform.position = _mainAttachmentPositionOverride.position;
+
         var attachment = Instantiate(attachmentPrefab, _secondaryAttachment.AttachmentPosition);
         _secondaryAttachment.Attachment = attachment.GetComponent<Attachment>();
         _secondaryAttachment.Attachment.Init(_playerManager);

@@ -269,8 +269,6 @@ MonoBehaviour:
     Attachment: {fileID: 0}
     AttachmentPosition: {fileID: 4056496439464651216}
     AttachmentButton: 324
-  _weapon1: {fileID: 4379085374981201120, guid: b5129f1a8bac8cd418bbf85d8facc7e5, type: 3}
-  _weapon2: {fileID: 4379085374981201120, guid: b5129f1a8bac8cd418bbf85d8facc7e5, type: 3}
 --- !u!54 &7721873650322312721
 Rigidbody:
   m_ObjectHideFlags: 0
