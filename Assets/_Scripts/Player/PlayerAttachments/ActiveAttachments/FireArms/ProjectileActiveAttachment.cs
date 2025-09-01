@@ -9,7 +9,7 @@ public class ProjectileActiveAttachment : ActiveAttachment
     [SerializeField] protected GunParts[] _gunParts;
 
     [Header("Animation Settings")]
-    [SerializeField] protected float _animationRecoilTime;
+    [SerializeField] protected float _animationTime;
     [SerializeField] protected float _animationRecoilStrength;
 }
 

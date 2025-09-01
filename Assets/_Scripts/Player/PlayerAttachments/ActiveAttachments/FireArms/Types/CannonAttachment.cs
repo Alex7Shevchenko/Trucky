@@ -31,7 +31,7 @@ public class CannonAttachment : ProjectileActiveAttachment
         Vector3 recoilImpulse = -_gunParts[0]._shotPoint.forward * _recoilStrength;
         _playerRigidbody.AddForceAtPosition(recoilImpulse, _gunParts[0]._shotPoint.position, ForceMode.Impulse);
 
-        float recoilTime = _animationRecoilTime * (_gunParts.Length + 1) > _cooldown ? _cooldown : _animationRecoilTime;
+        float recoilTime = _animationTime * (_gunParts.Length + 1) > _cooldown ? _cooldown : _animationTime;
         float recoilHalfTime = recoilTime / 2;
         float recoilStrength = -_animationRecoilStrength;
 

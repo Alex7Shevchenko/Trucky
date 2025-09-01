@@ -6,6 +6,7 @@ public class Debugger : EditorWindow
     private PlayerManager _targetPlayer;
     private GameObject _mainAttachment;
     private GameObject _secondaryAttachment;
+    private GameObject _thirdAttachment;
 
     [MenuItem("Tools/Debugger")]
     public static void ShowWindow()
@@ -20,15 +21,15 @@ public class Debugger : EditorWindow
             _targetPlayer = (PlayerManager)EditorGUILayout.ObjectField("Player", _targetPlayer, typeof(PlayerManager), true);
 
             GUILayout.Space(6);
-            
+
             using (new EditorGUILayout.HorizontalScope())
+            {
+                _mainAttachment = (GameObject)EditorGUILayout.ObjectField("Main Weapon", _mainAttachment, typeof(GameObject), true);
+                if (GUILayout.Button("Set Weapon") && _targetPlayer != null)
                 {
-                    _mainAttachment = (GameObject)EditorGUILayout.ObjectField("Main Weapon", _mainAttachment, typeof(GameObject), true);
-                    if (GUILayout.Button("Set Weapon") && _targetPlayer != null)
-                    {
-                        _targetPlayer.PlayerLoadout.AttachMainAttachment(_mainAttachment);
-                    }
+                    _targetPlayer.PlayerLoadout.AttachAttachment(_mainAttachment, AttachmentType.Main);
                 }
+            }
 
             GUILayout.Space(2);
 
@@ -37,7 +38,18 @@ public class Debugger : EditorWindow
                 _secondaryAttachment = (GameObject)EditorGUILayout.ObjectField("Secondary Weapon", _secondaryAttachment, typeof(GameObject), true);
                 if (GUILayout.Button("Set Weapon") && _targetPlayer != null)
                 {
-                    _targetPlayer.PlayerLoadout.AttachSecondaryAttachment(_secondaryAttachment);
+                    _targetPlayer.PlayerLoadout.AttachAttachment(_secondaryAttachment, AttachmentType.Secondary);
+                }
+            }
+
+            GUILayout.Space(2);
+
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                _thirdAttachment = (GameObject)EditorGUILayout.ObjectField("Third Weapon", _thirdAttachment, typeof(GameObject), true);
+                if (GUILayout.Button("Set Weapon") && _targetPlayer != null)
+                {
+                    _targetPlayer.PlayerLoadout.AttachAttachment(_thirdAttachment, AttachmentType.third);
                 }
             }
         }

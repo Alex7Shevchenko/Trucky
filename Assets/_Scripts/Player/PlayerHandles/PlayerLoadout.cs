@@ -1,64 +1,64 @@
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerLoadout : MonoBehaviour
 {
     [SerializeField] private PlayerManager _playerManager;
     [SerializeField] private Transform _mainAttachmentPositionOverride;
-    [SerializeField] private AttachmentProperties _mainAttachment;
-    [SerializeField] private AttachmentProperties _secondaryAttachment;
+    [SerializeField] private AttachmentProperties[] _attachmentProperties;
 
-    private void Update()
+    private void Update() => HandleAttachments();
+
+    private void HandleAttachments()
     {
-        HandleMainAttachment();
-        HandleSecondaryAttachment();
+        foreach (var attachmentProperty in _attachmentProperties)
+        {
+            if (attachmentProperty.Attachment == null) continue;
+
+            attachmentProperty.Attachment.HandleAbility(attachmentProperty.AttachmentButton);
+        }
     }
 
-    public void AttachMainAttachment(GameObject attachmentPrefab)
+    public void AttachAttachment(GameObject attachmentPrefab, AttachmentType attachmentType)
     {
-        var transformToAttach = _mainAttachment.AttachmentPosition;
+        int index = (int)attachmentType;
+        var mountPoint = _attachmentProperties[index].AttachmentPosition;
 
-        if (_mainAttachment.Attachment != null)
-            Destroy(_mainAttachment.Attachment.gameObject);
+        if (_attachmentProperties[index].Attachment != null)
+            Destroy(_attachmentProperties[index].Attachment.gameObject);
 
-        if (_secondaryAttachment.Attachment != null)
-            transformToAttach = _mainAttachmentPositionOverride;
+        var attachment = Instantiate(attachmentPrefab, mountPoint);
+        _attachmentProperties[index].Attachment = attachment.GetComponent<Attachment>();
+        _attachmentProperties[index].Attachment.Init(_playerManager);
 
-        var attachment = Instantiate(attachmentPrefab, transformToAttach);
-        _mainAttachment.Attachment = attachment.GetComponent<Attachment>();
-        _mainAttachment.Attachment.Init(_playerManager);
+        if (attachmentType == AttachmentType.Main || attachmentType == AttachmentType.Secondary)
+            RepositionMainGun();
     }
 
-    private void HandleMainAttachment()
+    private void RepositionMainGun()
     {
-        if (_mainAttachment.Attachment == null) return;
-        _mainAttachment.Attachment.HandleAbility(_mainAttachment.AttachmentButton);
-    }
+        int main = (int)AttachmentType.Main;
+        int secondary = (int)AttachmentType.Secondary;
+        Attachment mainAttachment = _attachmentProperties[main].Attachment;
+        Attachment secondaryAttachment = _attachmentProperties[secondary].Attachment;
 
-    public void AttachSecondaryAttachment(GameObject attachmentPrefab)
-    {
-        if (_secondaryAttachment.Attachment != null)
-            Destroy(_secondaryAttachment.Attachment.gameObject);
-
-        if (_mainAttachment.Attachment != null)
-            _mainAttachment.Attachment.transform.position = _mainAttachmentPositionOverride.position;
-
-        var attachment = Instantiate(attachmentPrefab, _secondaryAttachment.AttachmentPosition);
-        _secondaryAttachment.Attachment = attachment.GetComponent<Attachment>();
-        _secondaryAttachment.Attachment.Init(_playerManager);
-    }
-
-    private void HandleSecondaryAttachment()
-    {
-        if (_secondaryAttachment.Attachment == null) return;
-        _secondaryAttachment.Attachment.HandleAbility(_secondaryAttachment.AttachmentButton);
+        if (mainAttachment != null && secondaryAttachment != null)
+            mainAttachment.transform.position = _mainAttachmentPositionOverride.position;
     }
 }
 
 [System.Serializable]
 public class AttachmentProperties
 {
-    public Attachment Attachment;
+    [HideInInspector] public Attachment Attachment;
     public Transform AttachmentPosition;
     public KeyCode AttachmentButton;
+}
+
+public enum AttachmentType
+{
+    Main,
+    Secondary,
+    third
 }

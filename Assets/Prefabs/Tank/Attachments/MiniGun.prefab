@@ -491,7 +491,7 @@ MonoBehaviour:
     _shotPoint: {fileID: 7003592606462021231}
   - _recoilObjectTarget: {fileID: 4172497598065340345}
     _shotPoint: {fileID: 9199961532850566697}
-  _animationRecoilTime: 0.18
+  _animationTime: 0.18
   _animationRecoilStrength: 0.085
 --- !u!1 &8563662939088206487
 GameObject:

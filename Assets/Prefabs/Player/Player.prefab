@@ -168,14 +168,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerManager: {fileID: 1496391627839134891}
   _mainAttachmentPositionOverride: {fileID: 4153477648187760752}
-  _mainAttachment:
-    Attachment: {fileID: 0}
+  _attachmentProperties:
+  - Attachment: {fileID: 0}
     AttachmentPosition: {fileID: 7782811811869690543}
     AttachmentButton: 323
-  _secondaryAttachment:
-    Attachment: {fileID: 0}
+  - Attachment: {fileID: 0}
     AttachmentPosition: {fileID: 5827990950993030875}
     AttachmentButton: 324
+  - Attachment: {fileID: 0}
+    AttachmentPosition: {fileID: 422127426657602290}
+    AttachmentButton: 102
 --- !u!54 &7721873650322312721
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -268,6 +270,11 @@ Transform:
 --- !u!146 &282816892978711236 stripped
 WheelCollider:
   m_CorrespondingSourceObject: {fileID: 282099221873537404, guid: b37f9df1210e4a842bd401f0224f7813, type: 3}
+  m_PrefabInstance: {fileID: 1956891745221560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &422127426657602290 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 422565821399052618, guid: b37f9df1210e4a842bd401f0224f7813, type: 3}
   m_PrefabInstance: {fileID: 1956891745221560}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &693391270066089061 stripped
