@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2017401772330671344}
   - component: {fileID: 3782642656126684551}
   - component: {fileID: 4014028758630768441}
+  - component: {fileID: 2077367971629038012}
   m_Layer: 0
   m_Name: RocketPackage
   m_TagString: Untagged
@@ -84,6 +85,19 @@ CapsuleCollider:
   m_Height: 0.5
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.25}
+--- !u!114 &2077367971629038012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693736333496480165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1454c56dbf8eec43b59614f003baeb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 10
 --- !u!1 &5041744342066717960
 GameObject:
   m_ObjectHideFlags: 0
