@@ -60,5 +60,5 @@ public enum AttachmentType
 {
     Main,
     Secondary,
-    third
+    Third
 }
