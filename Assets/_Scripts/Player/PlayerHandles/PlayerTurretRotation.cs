@@ -6,35 +6,37 @@ public class PlayerTurretRotation : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] private Transform _turretBase;
     [SerializeField] private Transform _gunBase;
-    [SerializeField] private float _rotationSpeed;
-    [SerializeField] private float _maxYaw;
+    [SerializeField] private float _rotationSpeed = 180f;
+    [SerializeField] private float _maxPitch;
+    [SerializeField] private float _minPitch;
+    [SerializeField] private float _pitchSpeed;
 
     private void Update()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-        bool hasTarget = Physics.Raycast(ray, out RaycastHit raycastHit);
-
-        if (hasTarget)
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            HandleTurretRotation(raycastHit.point);
-            HandleGunYaw(raycastHit.point);
+            HandleTurretRotation(hit.point);
+            HandleGunPitch(hit.point);
         }
     }
 
     private void HandleTurretRotation(Vector3 point)
     {
-        Vector3 directionToTarget = point - _turretBase.position;
-        directionToTarget = Vector3.ProjectOnPlane(directionToTarget, -_turretBase.up);
-        Quaternion turretTarget = Quaternion.LookRotation(directionToTarget, _turretBase.up);
-        _turretBase.rotation = Quaternion.RotateTowards(_turretBase.rotation, turretTarget, _rotationSpeed * Time.deltaTime);
+        Vector3 dir = point - _turretBase.position;
+        dir = Vector3.ProjectOnPlane(dir, -_turretBase.up);
+        Quaternion target = Quaternion.LookRotation(dir, _turretBase.up);
+        _turretBase.rotation = Quaternion.RotateTowards(
+            _turretBase.rotation, target, _rotationSpeed * Time.deltaTime);
     }
 
-    private void HandleGunYaw(Vector3 point)
+    private void HandleGunPitch(Vector3 point)
     {
-        Vector3 directionToTarget = point - _gunBase.position;
-        Vector3 flatDirection = new Vector3(directionToTarget.x, 0f, directionToTarget.z);
-        float pitchAngle = -Mathf.Atan2(directionToTarget.y, flatDirection.magnitude) * Mathf.Rad2Deg;
-        pitchAngle = Mathf.Clamp(pitchAngle, -_maxYaw, _maxYaw);
-        _gunBase.localRotation = Quaternion.Euler(pitchAngle, 0, 0);
+        Vector3 toTarget = point - _gunBase.position;
+        Vector3 flat = new Vector3(toTarget.x, 0f, toTarget.z);
+        float desiredPitch = -Mathf.Atan2(toTarget.y, flat.magnitude) * Mathf.Rad2Deg;
+        desiredPitch = Mathf.Clamp(desiredPitch, _minPitch, _maxPitch);
+        Quaternion targetRotation = Quaternion.Euler(desiredPitch, 0f, 0f);
+        _gunBase.localRotation = Quaternion.RotateTowards(_gunBase.localRotation, targetRotation, _pitchSpeed * Time.deltaTime);
     }
 }

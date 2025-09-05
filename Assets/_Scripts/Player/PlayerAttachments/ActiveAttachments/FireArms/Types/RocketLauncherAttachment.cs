@@ -11,8 +11,8 @@ public class RocketLauncherAttachment : ProjectileActiveAttachment
         {
             _gunIndexToActivate = (_gunIndexToActivate + 1) % _gunParts.Length;
 
-            ShootRocket(_gunIndexToActivate);
-            ReloadRocketAnimation(_gunIndexToActivate);
+            ShootRocket();
+            ReloadRocketAnimation();
         }
     }
 
@@ -22,32 +22,18 @@ public class RocketLauncherAttachment : ProjectileActiveAttachment
         _gunIndexToActivate = 0;
     }
 
-    private void ShootRocket(int index)
+    private void ShootRocket()
     {
         _currentCooldown = _cooldown;
-        var shotPoint = _gunParts[index]._shotPoint;
+        var shotPoint = _gunParts[_gunIndexToActivate].ShotPoint;
         var bullet = Instantiate(_bulletPrefab, shotPoint.position, shotPoint.rotation);
         var rigidbody = bullet.GetComponent<Rigidbody>();
         rigidbody.AddForce(bullet.transform.forward * _shotStrength, ForceMode.Impulse);
     }
 
-    private void ReloadRocketAnimation(int index)
+    private void ReloadRocketAnimation()
     {
-        Sequence sequence = DOTween.Sequence();
-
-        var animateTransform = _gunParts[index]._recoilObjectTarget;
-        animateTransform.gameObject.SetActive(false);
-        var cooldownToAnimation = _cooldown - _animationTime;
-
-        Sequence seq = DOTween.Sequence()
-            .AppendCallback(() => animateTransform.gameObject.SetActive(false))
-            .AppendInterval(cooldownToAnimation)
-            .AppendCallback(() =>
-            {
-                animateTransform.gameObject.SetActive(true);
-                animateTransform.localPosition = animateTransform.localPosition - new Vector3(0f, _animationRecoilStrength, 0);
-            })
-            .Append(animateTransform.DOLocalMove(animateTransform.localPosition, _animationTime).SetEase(Ease.InOutBack));
+        _gunParts[_gunIndexToActivate].FeedbacksPlayer.PlayFeedbacks();
     }
 }
 

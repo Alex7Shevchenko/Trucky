@@ -6,10 +6,7 @@ public class ActiveAttachment : Attachment
 
     protected float _currentCooldown;
 
-    private void Update()
-    {
-        HandleCooldown();
-    }
+    private void Update() => HandleCooldown();
 
     private void HandleCooldown()
     {
