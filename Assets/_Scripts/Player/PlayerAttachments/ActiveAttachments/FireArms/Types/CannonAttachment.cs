@@ -21,7 +21,7 @@ public class CannonAttachment : ProjectileActiveAttachment
     {
         _currentCooldown = _cooldown;
         var shotPoint = _gunParts[0].ShotPoint;
-        var shell = Instantiate(_bulletPrefab, shotPoint.position, shotPoint.rotation);
+        var shell = Instantiate(_bulletPrefab.gameObject, shotPoint.position, shotPoint.rotation);
         var rigidbody = shell.GetComponent<Rigidbody>();
         rigidbody.AddForce(shell.transform.forward * _shotStrength, ForceMode.Impulse);
     }

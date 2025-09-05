@@ -284,9 +284,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cooldown: 1
-  _bulletPrefab: {fileID: 6685241118280909633, guid: f0092ae0f14d459489fa510aff211af6, type: 3}
-  _shotStrength: 100
-  _recoilStrength: 1000
+  _bulletPrefab: {fileID: 3486996320020306311, guid: f0092ae0f14d459489fa510aff211af6, type: 3}
+  _shotStrength: 500
   _gunParts:
   - ShotPoint: {fileID: 7000017165457196834}
     FeedbacksPlayer: {fileID: 9183019619155306319}

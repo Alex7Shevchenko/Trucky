@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ProjectileActiveAttachment : ActiveAttachment
 {
-    [SerializeField] protected GameObject _bulletPrefab;
+    [SerializeField] protected ProjectileBase _bulletPrefab;
     [SerializeField] protected float _shotStrength;
     [SerializeField] protected GunParts[] _gunParts;
 

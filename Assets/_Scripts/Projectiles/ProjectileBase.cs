@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class ProjectileBase : MonoBehaviour
 {
-    [SerializeField] private float _damage;
-    
-    private void OnCollisionEnter(Collision other)
+    [SerializeField] protected Rigidbody _rigidbody;
+    [SerializeField] protected float _damage;
+
+    public virtual void OnCollisionEnter(Collision other)
     {
         IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
 
