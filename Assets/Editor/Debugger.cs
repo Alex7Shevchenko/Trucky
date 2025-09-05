@@ -29,6 +29,7 @@ public class Debugger : EditorWindow
     private void OnEnable()
     {
         EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+        if (EditorApplication.isPlaying) AutoFindPlayer();
         LoadData();
     }
 
