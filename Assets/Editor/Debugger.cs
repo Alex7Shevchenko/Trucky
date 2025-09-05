@@ -43,22 +43,26 @@ public class Debugger : EditorWindow
         using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
         {
             _debuggerData = (DebuggerData)EditorGUILayout.ObjectField("Debugger Data", _debuggerData, typeof(DebuggerData), false);
-
-            if (_playerNames == null || _playerManagers == null) return;
-            
-            _selectedPlayer = EditorGUILayout.Popup("Player", _selectedPlayer, _playerNames);
-
-            GUILayout.Space(6);
-
             if (_debuggerData == null)
             {
                 EditorGUILayout.HelpBox("Assign a DebuggerData asset", MessageType.Info);
                 return;
             }
 
-            DrawAttachmentRow("Main Attachment", _debuggerData.mainAttachments, ref _mainAttachmentSelection, () => TryAttach(GetAt(_debuggerData.mainAttachments, _mainAttachmentSelection), AttachmentType.Main));
-            DrawAttachmentRow("Secondary Attachment", _debuggerData.secondaryAttachments, ref _secondaryAttachmentSelection, () => TryAttach(GetAt(_debuggerData.secondaryAttachments, _secondaryAttachmentSelection), AttachmentType.Secondary));
-            DrawAttachmentRow("Third Attachment", _debuggerData.thirdAttachments, ref _thirdAttachmentSelection, () => TryAttach(GetAt(_debuggerData.thirdAttachments, _thirdAttachmentSelection), AttachmentType.Third));
+            if (_playerNames == null || _playerManagers == null) return;
+            if (EditorApplication.isPlaying)
+            {
+                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                {
+                    _selectedPlayer = EditorGUILayout.Popup("Player", _selectedPlayer, _playerNames);
+
+                    GUILayout.Space(6);
+
+                    DrawAttachmentRow("Main Attachment", _debuggerData.mainAttachments, ref _mainAttachmentSelection, () => TryAttach(GetAt(_debuggerData.mainAttachments, _mainAttachmentSelection), AttachmentType.Main));
+                    DrawAttachmentRow("Secondary Attachment", _debuggerData.secondaryAttachments, ref _secondaryAttachmentSelection, () => TryAttach(GetAt(_debuggerData.secondaryAttachments, _secondaryAttachmentSelection), AttachmentType.Secondary));
+                    DrawAttachmentRow("Third Attachment", _debuggerData.thirdAttachments, ref _thirdAttachmentSelection, () => TryAttach(GetAt(_debuggerData.thirdAttachments, _thirdAttachmentSelection), AttachmentType.Third));
+                }
+            }
         }
     }
 
