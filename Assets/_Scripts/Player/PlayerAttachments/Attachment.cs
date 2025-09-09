@@ -1,7 +1,7 @@
 using UnityEngine;
 
-public class Attachment : MonoBehaviour
+public abstract class Attachment : MonoBehaviour
 {
-    public virtual void HandleAbility(KeyCode keyCode) { }
-    public virtual void Init(PlayerManager playerManager) { }
+    public abstract void HandleAbility(KeyCode keyCode);
+    public abstract void Init(PlayerManager playerManager);
 }

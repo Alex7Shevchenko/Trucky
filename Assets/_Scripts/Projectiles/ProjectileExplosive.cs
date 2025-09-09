@@ -1,9 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileExplosive : ProjectileBase
+public class ProjectileExplosive : ProjectileBase , IInitProjectile<Explosive>
 {
     [SerializeField] private float _explosionRadius;
+
+    public void Init(in Explosive data)
+    {
+        _explosionRadius = data.Radius;
+    }
 
     public override void OnCollisionEnter(Collision other)
     {
@@ -17,7 +22,8 @@ public class ProjectileExplosive : ProjectileBase
             damageablesSeen.Add(damageable);
         }
 
-        var collidersInRadius = Physics.OverlapSphere(hitPoint, _explosionRadius);
+        var collidersInRadius = Physics.OverlapSphere(hitPoint, _explosionRadius, GameManager.Instance.EnemyLayer);
+        
         foreach (var collider in collidersInRadius)
         {
             if (collider.attachedRigidbody == _rigidbody) continue;
@@ -34,7 +40,6 @@ public class ProjectileExplosive : ProjectileBase
             Vector3 explosionDirection = (rigidbody.worldCenterOfMass - hitPoint).normalized;
             float impulse = other.relativeVelocity.magnitude * normalizedDistance;
             rigidbody.AddForceAtPosition(explosionDirection * impulse, hitPoint, ForceMode.Impulse);
-
         }
 
         Destroy(gameObject);

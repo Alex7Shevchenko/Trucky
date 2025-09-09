@@ -1,19 +1,14 @@
 using UnityEngine;
 
-public class ProjectileBase : MonoBehaviour
+public abstract class ProjectileBase : MonoBehaviour, IInitProjectile<Basic>
 {
+    protected float _damage { get; set; }
     [SerializeField] protected Rigidbody _rigidbody;
-    [SerializeField] protected float _damage;
 
-    public virtual void OnCollisionEnter(Collision other)
+    public void Init(in Basic data)
     {
-        IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
-
-        if (damageable != null)
-        {
-            damageable.Damage(_damage);
-        }
-
-        Destroy(gameObject);
+        _damage = data.Damage;
     }
+
+    public abstract void OnCollisionEnter(Collision other);
 }
