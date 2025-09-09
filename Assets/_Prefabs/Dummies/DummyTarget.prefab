@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 2670915244255570816}
   - component: {fileID: 4303359568000391224}
   - component: {fileID: 3835122340256952638}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DummyBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6234047534879430587}
   - component: {fileID: 1973846482290231912}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DummyTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
